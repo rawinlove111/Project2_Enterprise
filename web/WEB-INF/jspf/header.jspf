@@ -1,0 +1,363 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+        <link href="css/bootstrap.css" type="text/css" rel="stylesheet">
+        <script src="js/bootstrap.js" type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css" href="css/nav_bar.css">
+        
+       
+        <title>BANGKOK HOSPITAL</title>
+    </head>
+    <body>
+        
+        <div class="navbar navbar-inverse" style="margin:0px;" role="navigation">
+            <div class="container-fluid">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+
+                <h1 style="padding-left:6px;padding-top:10px">
+                        <img src="img/sci.png" width="50px" height="50px"> BANGKOK HOSPITAL
+                    </h1> 
+              </div>
+
+              <!-- Collect the nav links, forms, and other content for toggling -->
+
+                <ul class="nav navbar-nav navbar-right">
+                  <li><p class="navbar-text" id='login-text1'>Already have an account?</p></li>
+                  <li class="dropdown">
+                                    <ul class="nav navbar-nav navbar-right">
+          
+                              <li>
+
+                                  <a id="usern" > - </a>
+                              </li>
+
+                              <li>
+
+                                  <a id="userLogin" data-toggle="modal" data-target="#myModal"><b>Login</b> <span class="caret"></span></a>
+                              </li>
+
+                              <li>
+                                  <a id="userLogout">
+                                      <form  method="post" action="Logout">
+                                      <input type="submit" value="Logout" />
+                                  </form>
+                                  </a>
+
+                              </li>
+
+                              <li>
+                                  <a id="headertoggle" >Show/Hide</a>
+                              </li>
+
+                          </ul>   
+
+                  </li>
+                </ul>
+               
+              <div class="col-md-12 cmainheader"  style="width: 100%; height:225px;">
+
+            <div class="col-md-3 " style="height:100%; padding: 0px;">
+                <a href="#whyus" class="headerelement" style="background-image:url('img/homepageicon.png');"> </a>
+            </div>
+
+            <div class="col-md-3 " style="height:100%; padding: 0px;">
+                <a href="#apply" id="applyOption" class="headerelement" style="background-image:url('img/applyicon.png');"></a>
+            </div>
+
+            <div class="col-md-3 " style="height:100%; padding: 0px;"> 
+                <a href="#about" class="headerelement" style="background-image:url('img/abouticon.png');"></a>
+            </div>
+
+            <div class="col-md-3 " style="height:100%; padding: 0px;">
+                <a href="#contact" class="headerelement" style="background-image:url('img/contactusicon.png');"></a>
+            </div>
+
+        </div>
+              
+            </div>  
+ 
+        </div>
+        
+
+
+</body>
+
+ <script>
+   
+           function initProfile(){
+            
+            var _s = "<%= session.getAttribute("status")%>";
+            //alert(_s);
+            if( _s != null &&_s == "r"){
+                $("#status").html("Status :" +" <b style='color:red'>Rejected</b>");
+            } else if( _s == "a"){
+                $("#status").html("Status :" +" <b style='color:green'>Accepted</b>");
+            } else {
+                 $("#status").html("Status :" +" <b style='color:yellow'>Under process</b>");
+            }
+            
+            
+                $("#first_name").html("First Name : " +"<%= session.getAttribute("fname")%>");
+                $("#last_name").html("Last Name : " + "<%= session.getAttribute("lname")%>");
+                $("#email2").html("Email : " + "<%= session.getAttribute("email")%>");
+                $("#phone").html("Phone : " + "<%= session.getAttribute("phone")%>");
+                $("#city").html("City : " + "<%= session.getAttribute("city")%>");
+                $("#province").html("Province : " + "<%= session.getAttribute("province")%>");
+                $("#zip").html("Zip : " +"<%= session.getAttribute("zip")%>");
+                $("#address").html("Address : " +"<%= session.getAttribute("address")%>");
+                $("#age").html("Age : " +"<%= session.getAttribute("age")%>");
+                $("#gender").html("Gender : " +"<%= session.getAttribute("gender")%>");
+                $("#religion").html("Religion : " +"<%= session.getAttribute("religion")%>");
+                $("#ethnicity").html("Ethnicity : " +"<%= session.getAttribute("ethnicity")%>");
+                $("#remarks").html("Extra remarks*: " +"<%= session.getAttribute("remarks")%>");
+        }
+        
+        $(document).ready(function(){
+            var x = "<%= session.getAttribute("user")%>";
+            //alert(x);
+            if(x == "null"){
+                $("#usern").hide();
+                $("#userLogout").hide();
+                $("#userLogin").show();
+                $("#profile").hide();
+                
+                
+                
+            } else {
+                $("#profile").show();
+                $("#usern").html("Hello, " + x);
+                $("#userLogin").hide();
+                $("#userLogout").show();
+                $("#login-text1").html("You have logged in!");
+                
+                $("#usern").show();
+               // if($("#cprofileInner").html() == '') {
+                      $("#cprofileInner").load("profile.jsp #profileContainer",function(){
+                          initProfile(function(){
+                            $("#profile").slideDown(400);
+                          });
+                      });
+                      
+                 $("#whyus").hide();
+                 $("#about").hide();
+                 $("#otherInfo").hide();
+                 $("#contact").hide();     
+                 $("#ourstudents").hide(); 
+                 $("#headerimage").hide(); 
+                 $("#headerblock1").hide(); 
+               // }
+                
+                
+                
+                
+//                $("#userLogin").attr('data-target','#myModal');
+//                $("#usern").html("Hello, " + x);
+                
+//            
+//            $("#userLogin").attr('data-target','#');
+            //alert(x);
+            //$("#userr").html(x);
+             }
+        });
+       
+       
+       $("#userLogout").click(function(){
+          // alert("!!");
+
+       });
+      
+
+//        $("#login").click(function(){
+//                alert("!");
+//                var email = $("#email").val();
+//                var password = $("#password").val();
+//                // Checking for blank fields.
+//                if( email =='' || password ==''){
+//                $('input[type="text"],input[type="password"]').css("border","2px solid red");
+//                $('input[type="text"],input[type="password"]').css("box-shadow","0 0 3px red");
+//                alert("Please fill all fields...!!!!!!");
+//                }else {
+////                      $.ajax({
+////                   type:"GET",
+////                   url:"/Home",
+////                   data:{message:email},
+////                   
+////                      });
+//                }
+//            });
+
+
+            //alert(x);
+            
+               
+                
+                    toggleSlider();
+
+     $("#cancelReg").click(function(){
+         alert("!");
+        
+        
+         $(".capplycontent").slideUp(400,function(){
+             $("#applyInner").html('');
+         });
+         
+          $("#whyus").show();
+                 $("#about").show();
+                 $("#otherInfo").show();
+                 $("#contact").show(); 
+                 $("#ourstudents").show(); 
+                 $("#headerimage").show(); 
+                 $("#headerblock1").show();
+                 toggleSlider();
+         
+     });
+  
+    $("#applyAccept").click(function(){
+//        $("#applyInner").html('');
+//        toggle("#whyus");
+//        toggle("#about");
+//        toggle("#contact");
+//        $("#applyInner").load("register.jsp");
+    });
+        
+    $("#headertoggle").click(function(){
+        toggleSlider();
+    });
+    
+    
+    
+    
+    $("#applyOption").click(function(){
+        
+        if($("#applyInner").html() == ''){
+            $("#applyInner").load("register.jsp",function() {
+            
+            $(".capplycontent").slideDown(400);
+                 $("#whyus").hide();
+                 $("#about").hide();
+                 $("#otherInfo").hide();
+                 $("#contact").hide(); 
+                 $("#ourstudents").hide(); 
+                 $("#headerimage").hide(); 
+                 $("#headerblock1").hide();
+                 toggleSlider();
+        });
+        }
+        //alert( "Load was performed." );
+    });
+    
+    
+    
+     
+    
+    function toggle(id) {
+        console.log($(id).is(":visible"));
+        if ($(id).is(":visible")) {
+            $(id).slideUp(400);
+           // $('.headerelement').text('GOING TO HIDE.');
+//            $(".headerelement").animate(
+//                {
+//                    opacity: "0"
+//                },
+//                400,
+//                function () {
+//                    $(id).slideUp();
+//                }
+//            );
+        }
+        else {
+            $(id).slideDown(400);
+//            $(id).slideDown(400, function () {
+//               // $('.headerelement').text('COMING TO VIEW.');
+//                $(".headerelement").animate(
+//                    {
+//                        opacity: "1",
+//                    },
+//                    400
+//                );
+//            });
+        }
+         //setTimeout("toggleSlider()", 5000);
+    }
+    
+    //toggleSlider();
+    
+    function toggleSlider() {
+        console.log($(".cmainheader").is(":visible"));
+        if ($(".cmainheader").is(":visible")) {
+           // $('.headerelement').text('GOING TO HIDE.');
+            $(".headerelement").animate(
+                {
+                    opacity: "0"
+                },
+                400,
+                function () {
+                    $(".cmainheader").slideUp();
+                }
+            );
+        }
+        else {
+            
+            $(".cmainheader").slideDown(400, function () {
+               // $('.headerelement').text('COMING TO VIEW.');
+                $(".headerelement").animate(
+                    {
+                        opacity: "1",
+                    },
+                    400
+                );
+            });
+        }
+         //setTimeout("toggleSlider()", 5000);
+    }
+    
+    
+      $('a[href*="#"]')
+      // Remove links that don't actually link to anything
+      .not('[href="#"]')
+      .not('[href="#0"]')
+      .click(function(event) {
+        // On-page links
+        if (
+          location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+          && 
+          location.hostname == this.hostname
+        ) {
+          // Figure out element to scroll to
+          var target = $(this.hash);
+          target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+          // Does a scroll target exist?
+          if (target.length) {
+            // Only prevent default if animation is actually gonna happen
+            event.preventDefault();
+            $('html, body').animate({
+              scrollTop: target.offset().top - 50
+            }, 1000, function() {
+              // Callback after animation
+              // Must change focus!
+              var $target = $(target);
+              $target.focus();
+              if ($target.is(":focus")) { // Checking if the target was focused
+                return false;
+              } else {
+                $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+                $target.focus(); // Set focus again
+              };
+            });
+          }
+        }
+      });
+      
+      
+    
+    </script>
+            

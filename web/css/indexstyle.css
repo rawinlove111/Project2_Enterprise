@@ -1,0 +1,103 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 10, 2017, 3:15:33 PM
+    Author     : LEO
+*/
+/*html{
+    overflow: scroll;
+    overflow-x: hidden;
+}*/
+body{
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    padding-right: 0 !important;
+    background-color: #222A35;
+    background-attachment: fixed;
+    background-position: center;
+    color:#eeeeee;
+    padding: 0px;
+}
+
+h1{
+    font-family: 'Garamond','Helvetica', 'Arial', sans-serif;
+    font-weight:bold;
+    margin-top:0px;
+}
+
+
+.sclogo{
+    float:right;
+    margin-right: 150px;
+    margin-top: 65px;
+}
+
+.cheaderimage{
+/*    background-color:whitesmoke;*/
+background-image:url('http://www.cs.au.edu/assets/img/sliders/home/banner2.jpg');
+/*background-attachment:fixed;*/
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    
+}
+
+.capplycontent{
+    margin-top:30px;
+    margin-bottom:30px;
+    width:75%;
+    margin-right: auto; 
+    margin-left: auto; 
+    height:auto;
+    display:none; 
+    /*background-color:rgba(50,50,50,0.2);*/ 
+    background-color:rgba(50,50,50,0.75);
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+     color:black;
+/*    whitesmoke*/
+    
+/*background:url('http://www.wallpaperup.com/uploads/wallpapers/2014/04/19/338013/bdddadc74c89b9cd27c1f6ce34701055.jpg');*/
+}
+
+.clogin{
+    
+        background-color:rgba(50,50,50,0.94);
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#login-header{
+    margin-top: 10px;
+    margin-bottom: 22px;
+}
+
+
+.blockHeader{
+ 
+/*    background:url('http://www.wallpaperup.com/uploads/wallpapers/2014/04/19/338013/bdddadc74c89b9cd27c1f6ce34701055.jpg');*/
+    background-color: #222222;
+   
+}
+
+.cmainheader{
+    display:none; 
+    -webkit-transform: translate(0,-5px); /** Chrome & Safari **/
+    -o-transform: translate(0,-5px); /** Opera **/
+    -moz-transform: translate(0,-5px); /** Firefox **/
+    
+}
+
+.ccontentblock{
+    background-color:#2C3E50;
+    background-color:rgba(50,50,50,0.75);
+/*    background-color:whitesmoke;*/
+    width:75%; 
+    margin-right: auto; 
+    margin-left: auto; 
+    margin-bottom:10px;
+    height:500px;
+    margin-top: 30px; 
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    
+}
